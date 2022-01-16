@@ -1,0 +1,31 @@
+CREATE TABLE [dbo].[cotacao]
+(
+	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[CNPJComprador] NVARCHAR(20) NOT NULL,
+	[CNPJFornecedor] NVARCHAR(20) NOT NULL,
+	[NumeroCotacao] BIGINT NOT NULL,
+	[DataCotacao] DATETIME NOT NULL,
+	[DataEntregaCotacao] DATETIME NOT NULL,
+	[CEP] VARCHAR(20) NOT NULL,
+	[Logradouro] NVARCHAR(200),
+	[Complemento] NVARCHAR(200),
+	[Bairro] NVARCHAR(50),
+	[UF] NVARCHAR(20),
+	[Observacao] NVARCHAR(999),
+)
+
+CREATE TABLE [dbo].[cotacaoitem]
+(
+	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[IdCotacao] INT NOT NULL,
+	[Descricao] NVARCHAR(200) NOT NULL,
+	[NumeroItem] BIGINT NOT NULL,
+	[Preco] MONEY,
+	[Quantidade] INT NOT NULL,
+	[Marca] NVARCHAR(200),
+	[Unidade] NVARCHAR(200),
+	FOREIGN KEY (IdCotacao) REFERENCES cotacao(Id)
+)
+
+
+Scaffold-DbContext "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\DEV\Atividade\Api\Api\Database\iara.mdf;Integrated Security=True;Connect Timeout=30" Microsoft.EntityFrameworkCore.SqlServer -o Models -f -Context apiContexto
