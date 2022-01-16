@@ -26,6 +26,3 @@ CREATE TABLE [dbo].[cotacaoitem]
 	[Unidade] NVARCHAR(200),
 	FOREIGN KEY (IdCotacao) REFERENCES cotacao(Id)
 )
-
-
-Scaffold-DbContext "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\DEV\Atividade\Api\Api\Database\iara.mdf;Integrated Security=True;Connect Timeout=30" Microsoft.EntityFrameworkCore.SqlServer -o Models -f -Context apiContexto
